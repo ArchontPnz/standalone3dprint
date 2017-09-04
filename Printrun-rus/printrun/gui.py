@@ -357,15 +357,15 @@ class MainToolbar(wx.BoxSizer):
         imageFS = wx.Image(imagefile('fullscreen.png'), wx.BITMAP_TYPE_ANY).ConvertToBitmap()
         root.fullscreenbtn = wx.BitmapButton(root.panel, -1, bitmap=imageFS, size = (buttonSize[1], buttonSize[1]), style = wx.BU_EXACTFIT) #size is square, it's not a typo
         root.fullscreenbtn.Bind(wx.EVT_BUTTON, root.fullscreen)
-	root.fullscreenbtn.SetToolTip(wx.ToolTip("Toggle full screen"))
+	root.fullscreenbtn.SetToolTip(wx.ToolTip("Переключить в полноэкранный режим"))
 	self.Add(root.fullscreenbtn)
-        root.rescanbtn = make_sized_button(root.panel, _("Порт"), root.rescanports, _("Communication Settings\nClick to rescan ports"))
+        root.rescanbtn = make_autosize_button(root.panel, _("Порт"), root.rescanports, _("Communication Settings\nClick to rescan ports"))
         self.Add(root.rescanbtn, 0, wx.TOP|wx.LEFT, 0)
 
         root.serialport = wx.ComboBox(root.panel, -1,
                 choices = root.scanserial(),
                 style = wx.CB_DROPDOWN, size = (100, 25))
-        root.serialport.SetToolTip(wx.ToolTip("Select Port Printer is connected to"))
+        root.serialport.SetToolTip(wx.ToolTip("Выбрать порт для подключения принтера"))
         root.rescanports()
         self.Add(root.serialport)
 
@@ -380,20 +380,20 @@ class MainToolbar(wx.BoxSizer):
         except:
             pass
         self.Add(root.baud)
-        root.connectbtn = make_sized_button(root.panel, _("Connect"), root.connect, _("Connect to the printer"), self)
+        root.connectbtn = make_autosize_button(root.panel, _("Подключение"), root.connect, _("Подключение к принтеру"), self)
 
-        root.resetbtn = make_autosize_button(root.panel, _("Reset"), root.reset, _("Reset the printer"), self)
-        root.loadbtn = make_autosize_button(root.panel, _("Load file"), root.loadfile, _("Load a 3D model file"), self)
+        root.resetbtn = make_autosize_button(root.panel, _("Сброс"), root.reset, _("Перезагрузить принтер"), self)
+        root.loadbtn = make_autosize_button(root.panel, _("Загрузить файл"), root.loadfile, _("Загрузить файл 3D-модели"), self)
         #root.platebtn = make_autosize_button(root.panel, _("Compose"), root.plate, _("Simple Plater System"), self)
         #root.sdbtn = make_autosize_button(root.panel, _("SD"), root.sdmenu, _("SD Card Printing"), self)
         #root.printerControls.append(root.sdbtn)
         #self.Hide(root.sdbtn)
         #self.Hide(root.platebtn)
         
-        root.printbtn = make_sized_button(root.panel, _("Print"), root.printfile, _("Start Printing Loaded File"), self)
+        root.printbtn = make_autosize_button(root.panel, _("Печать"), root.printfile, _("Старт печати загруженного файла"), self)
         root.printbtn.Disable()
-        root.pausebtn = make_autosize_button(root.panel, _("Pause"), root.pause, _("Pause Current Print"), self)
-        root.recoverbtn = make_autosize_button(root.panel, _("Recover"), root.recover, _("Recover previous Print"), self)
+        root.pausebtn = make_autosize_button(root.panel, _("Пауза"), root.pause, _("Приостановить печать"), self)
+        root.recoverbtn = make_autosize_button(root.panel, _("Вернуть"), root.recover, _("Восстановить предыдущую печать"), self)
      
         #root.fullscreenbtn = make_autosize_button(root.panel, "FS", root.fullscreen, "Make full screen", self)
 
@@ -441,7 +441,7 @@ class MainWindow(wx.Frame):
         self.mainsizer.Add(self.lowersizer) #, 1, wx.EXPAND)
         self.panel.SetSizer(self.mainsizer)
         self.status = self.CreateStatusBar()
-        self.status.SetStatusText(_("Not connected to printer."))
+        self.status.SetStatusText(_("Нет соединения с принтером"))
         self.panel.Bind(wx.EVT_MOUSE_EVENTS, self.editbutton)
         self.Bind(wx.EVT_CLOSE, self.kill)
 
