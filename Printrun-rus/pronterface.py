@@ -566,19 +566,19 @@ class PronterWindow(MainWindow, pronsole.pronsole):
         self.menustrip = wx.MenuBar()
         # File menu
         m = wx.Menu()
-        self.Bind(wx.EVT_MENU, self.loadfile, m.Append(-1, _("&Open..."), _(" Opens file")))
-        self.Bind(wx.EVT_MENU, self.do_editgcode, m.Append(-1, _("&Edit..."), _(" Edit open file")))
-        self.Bind(wx.EVT_MENU, self.clearOutput, m.Append(-1, _("Clear console"), _(" Clear output console")))
+        self.Bind(wx.EVT_MENU, self.loadfile, m.Append(-1, _("&Открыть..."), _(" Открыть файл")))
+        self.Bind(wx.EVT_MENU, self.do_editgcode, m.Append(-1, _("&Редактировать..."), _(" Редактировать открытый файл")))
+        self.Bind(wx.EVT_MENU, self.clearOutput, m.Append(-1, _("Очистить консоль"), _(" Очистить вывод консоль")))
         self.Bind(wx.EVT_MENU, self.project, m.Append(-1, _("Projector"), _(" Project slices")))
-        self.Bind(wx.EVT_MENU, self.OnExit, m.Append(wx.ID_EXIT, _("E&xit"), _(" Closes the Window")))
-        self.menustrip.Append(m, _("&File"))
+        self.Bind(wx.EVT_MENU, self.OnExit, m.Append(wx.ID_EXIT, _("Выход"), _(" Закрыть окно")))
+        self.menustrip.Append(m, _("&Файл"))
 
         # Settings menu
         m = wx.Menu()
         self.macros_menu = wx.Menu()
-        m.AppendSubMenu(self.macros_menu, _("&Macros"))
-        self.Bind(wx.EVT_MENU, self.new_macro, self.macros_menu.Append(-1, _("<&New...>")))
-        self.Bind(wx.EVT_MENU, lambda *e:options(self), m.Append(-1, _("&Options"), _(" Options dialog")))
+        m.AppendSubMenu(self.macros_menu, _("&Макрос"))
+        self.Bind(wx.EVT_MENU, self.new_macro, self.macros_menu.Append(-1, _("<&Новый...>")))
+        self.Bind(wx.EVT_MENU, lambda *e:options(self), m.Append(-1, _("&Опции"), _(" Диалоговое окно выбора опций")))
 
         self.Bind(wx.EVT_MENU, lambda x: threading.Thread(target = lambda:self.do_skein("set")).start(), m.Append(-1, _("Slicing Settings"), _(" Adjust slicing settings")))
 
@@ -593,7 +593,7 @@ class PronterWindow(MainWindow, pronsole.pronsole):
         #except:
         #    pass
 
-        self.menustrip.Append(m, _("&Settings"))
+        self.menustrip.Append(m, _("&Настройки"))
         self.update_macros_menu()
         self.SetMenuBar(self.menustrip)
 

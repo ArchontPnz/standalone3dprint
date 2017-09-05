@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# coding: utf-8
 # This file is part of the Printrun suite.
 #
 # Printrun is free software: you can redistribute it and/or modify
@@ -214,7 +214,7 @@ class pronsole(cmd.Cmd):
         self.settings._bedtemp_pla_cb = self.set_temp_preset
         self.monitoring = 0
         self.helpdict = {}
-        self.helpdict["baudrate"] = _("Communications Speed (default: 115200)")
+        self.helpdict["baudrate"] = _("Скорость соединения (по умолчанию: 115200)")
         self.helpdict["bedtemp_abs"] = _("Heated Build Platform temp for ABS (default: 110 deg C)")
         self.helpdict["bedtemp_pla"] = _("Heated Build Platform temp for PLA (default: 60 deg C)")
         self.helpdict["e_feedrate"] = _("Feedrate for Control Panel Moves in Extrusions (default: 300mm/min)")
