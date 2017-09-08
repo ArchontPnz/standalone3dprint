@@ -219,10 +219,10 @@ class LeftPane(wx.GridBagSizer):
         #self.Add(root.monitorbox, pos = (2, 6))
         #root.monitorbox.Bind(wx.EVT_CHECKBOX, root.setmonitor)
         
-        self.Add(wx.StaticText(root.panel,-1, _("Heat:")), pos = (2, 0), span = (1, 1), flag = wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT)
+        self.Add(wx.StaticText(root.panel,-1, _("Хотэнд:")), pos = (2, 0), span = (1, 1), flag = wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT)
         htemp_choices = [root.temps[i]+" ("+i+")" for i in sorted(root.temps.keys(), key = lambda x:root.temps[x])]
 
-        root.settoff = make_button(root.panel, _("Off"), lambda e: root.do_settemp("off"), _("Switch Hotend Off"), size = (45,40), style = wx.BU_EXACTFIT)
+        root.settoff = make_button(root.panel, _("Выкл"), lambda e: root.do_settemp("off"), _("Отключить хотэнд"), size = (50,40), style = wx.BU_EXACTFIT)
         root.printerControls.append(root.settoff)
         self.Add(root.settoff, pos = (2, 1), span = (1, 1))
 
@@ -238,10 +238,10 @@ class LeftPane(wx.GridBagSizer):
         root.printerControls.append(root.settbtn)
         self.Add(root.settbtn, pos = (2, 4), span = (1, 1))
 
-        self.Add(wx.StaticText(root.panel,-1, _("Bed:")), pos = (3, 0), span = (1, 1), flag = wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT)
+        self.Add(wx.StaticText(root.panel,-1, _("Стол:")), pos = (3, 0), span = (1, 1), flag = wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT)
         btemp_choices = [root.bedtemps[i]+" ("+i+")" for i in sorted(root.bedtemps.keys(), key = lambda x:root.temps[x])]
 
-        root.setboff = make_button(root.panel, _("Off"), lambda e:root.do_bedtemp("off"), _("Switch Heated Bed Off"), size = (45,40), style = wx.BU_EXACTFIT)
+        root.setboff = make_button(root.panel, _("Выкл"), lambda e:root.do_bedtemp("off"), _("Выключить подогрев стола"), size = (50,40), style = wx.BU_EXACTFIT)
         root.printerControls.append(root.setboff)
         self.Add(root.setboff, pos = (3, 1), span = (1, 1))
 
