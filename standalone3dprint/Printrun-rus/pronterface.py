@@ -113,7 +113,7 @@ class PronterWindow(MainWindow, pronsole.pronsole):
         self.helpdict["bgcolor"] = _("Pronterface background color (default: #FFFFFF)")
         self.filename = filename
         os.putenv("UBUNTU_MENUPROXY", "0")
-        MainWindow.__init__(self, None, title = _("Printer Interface"), size = size);
+        MainWindow.__init__(self, None, title = _("Интерфейс принтера"), size = size);
         self.SetIcon(wx.Icon(pixmapfile("P-face.ico"), wx.BITMAP_TYPE_ICO))
         self.statuscheck = False
         self.status_thread = None
@@ -1383,7 +1383,7 @@ class PronterWindow(MainWindow, pronsole.pronsole):
         self.skeinp = None
 
     def skein(self, filename):
-        wx.CallAfter(self.loadbtn.SetLabel, _("Cancel"))
+        wx.CallAfter(self.loadbtn.SetLabel, _("Отмена"))
         print _("Slicing ") + filename
         self.cout = StringIO.StringIO()
         self.filename = filename
@@ -1409,8 +1409,8 @@ class PronterWindow(MainWindow, pronsole.pronsole):
                 basedir = os.path.split(self.filename)[0]
             except:
                 pass
-        dlg = wx.FileDialog(self, _("Open file to print"), basedir, style = wx.FD_OPEN|wx.FD_FILE_MUST_EXIST)
-        dlg.SetWildcard(_("OBJ, STL, and GCODE files (*.gcode;*.gco;*.g;*.stl;*.STL;*.obj;*.OBJ)|*.gcode;*.gco;*.g;*.stl;*.STL;*.obj;*.OBJ|All Files (*.*)|*.*"))
+        dlg = wx.FileDialog(self, _("Открыть файл для печати"), basedir, style = wx.FD_OPEN|wx.FD_FILE_MUST_EXIST)
+        dlg.SetWildcard(_("OBJ, STL и файлы g-кода (*.gcode;*.gco;*.g;*.stl;*.STL;*.obj;*.OBJ)|*.gcode;*.gco;*.g;*.stl;*.STL;*.obj;*.OBJ|Все файлы (*.*)|*.*"))
         if(filename is not None or dlg.ShowModal() == wx.ID_OK):
             if filename is not None:
                 name = filename

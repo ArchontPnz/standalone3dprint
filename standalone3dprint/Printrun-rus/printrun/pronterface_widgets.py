@@ -1,3 +1,4 @@
+# coding: utf-8
 # This file is part of the Printrun suite.
 #
 # Printrun is free software: you can redistribute it and/or modify
@@ -13,6 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Printrun.  If not, see <http://www.gnu.org/licenses/>.
 
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import wx
 import re
 
@@ -32,14 +37,14 @@ class MacroEditor(wx.Dialog):
         titletext = wx.StaticText(self.panel,-1, "              _")  #title%macro_name)
         #title.SetFont(wx.Font(11, wx.NORMAL, wx.NORMAL, wx.BOLD))
         titlesizer.Add(titletext, 1)
-        self.findb = wx.Button(self.panel,  -1, _("Find"), style = wx.BU_EXACTFIT)  #New button for "Find" (Jezmy)
+        self.findb = wx.Button(self.panel,  -1, _("Найти"), style = wx.BU_EXACTFIT)  #New button for "Find" (Jezmy)
         self.findb.Bind(wx.EVT_BUTTON,  self.find)
-        self.okb = wx.Button(self.panel, -1, _("Save"), style = wx.BU_EXACTFIT)
+        self.okb = wx.Button(self.panel, -1, _("Сохранить"), style = wx.BU_EXACTFIT)
         self.okb.Bind(wx.EVT_BUTTON, self.save)
         self.Bind(wx.EVT_CLOSE, self.close)
         titlesizer.Add(self.findb)
         titlesizer.Add(self.okb)
-        self.cancelb = wx.Button(self.panel, -1, _("Cancel"), style = wx.BU_EXACTFIT)
+        self.cancelb = wx.Button(self.panel, -1, _("Отмена"), style = wx.BU_EXACTFIT)
         self.cancelb.Bind(wx.EVT_BUTTON, self.close)
         titlesizer.Add(self.cancelb)
         topsizer = wx.BoxSizer(wx.VERTICAL)
